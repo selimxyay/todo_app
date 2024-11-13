@@ -16,23 +16,21 @@ class ToDoContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    return Padding(
-      padding: const EdgeInsets.all(25),
-      child: Container(
-        decoration: BoxDecoration(
-          color: theme.primaryContainer,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        padding: const EdgeInsets.all(24),
-        child: Row(
-          children: [
-            Checkbox(
-              value: value, 
-              onChanged: onChanged,
-            ),
-            Text(taskName),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.all(24),
+      margin: const EdgeInsets.all(25),
+      decoration: BoxDecoration(
+        color: theme.primaryContainer,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Checkbox(
+            value: value, 
+            onChanged: onChanged,
+          ),
+          Text(taskName),
+        ],
       ),
     );
   }
