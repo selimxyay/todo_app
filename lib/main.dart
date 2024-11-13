@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,6 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return MaterialApp(
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+      ),
+      home: const HomePage(),
+    );
   }
 }
