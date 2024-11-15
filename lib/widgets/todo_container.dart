@@ -5,7 +5,6 @@ class ToDoContainer extends StatelessWidget {
   final String taskName;
   final bool isTaskCompleted;
   void Function(bool?)? onChanged;
-  void Function()? onEdit;
   void Function()? onDelete;
   
   ToDoContainer({
@@ -13,7 +12,6 @@ class ToDoContainer extends StatelessWidget {
     required this.isTaskCompleted, 
     required this.taskName, 
     required this.onChanged,
-    required this.onEdit,
     required this.onDelete,
   });
 
@@ -48,11 +46,6 @@ class ToDoContainer extends StatelessWidget {
               color: Colors.redAccent.shade700,
               onPressed: onDelete, 
               icon: const Icon(Icons.delete)
-            ),
-            const SizedBox(width: 8),
-            IconButton(
-              onPressed: onEdit, 
-              icon: const Icon(Icons.edit)
             ),
           ],
         ),
