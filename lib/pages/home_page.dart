@@ -13,7 +13,12 @@ class _HomePageState extends State<HomePage> with HomePageLogic {
   @override
   void initState() {
     super.initState();
-    todo.get('todoList') == null 
+    /// so in here, if the key of todoList is equal to null, which means it doesn't exist,
+    /// which means either user is opening the app for the first time or hasn't changed anything.
+    /// so in this situation, initialData method will be executed.
+    /// if the key is not null, so this means user actually used the app and made some changes.
+    /// so in this condition, loadData method will be executed and it will get the todos key. 
+    box.get('todoList') == null 
     ? db.initialData()
     : db.loadData();
   }
@@ -29,17 +34,17 @@ class _HomePageState extends State<HomePage> with HomePageLogic {
       ),
       body: ListView.builder(
         itemCount: db.todoList.length,
-        itemBuilder: (context, builderIndex) {
+        itemBuilder: (context, index) {
           return ToDoContainer(
-            taskName: db.todoList[builderIndex][0],
-            isTaskCompleted: db.todoList[builderIndex][1],
-            onChanged: (newValue) => onCheckBoxValueChanged(index: builderIndex, value: newValue),
-            onDelete: () => deleteTask(index: builderIndex),
+            taskName: db.todoList[index][0],
+            isTaskCompleted: db.todoList[index][1],
+            onChanged: (newValue) => onCheckBoxValueChanged(index: index, value: newValue),
+            onDelete: () => deleteTask(index: index),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: createNewTask,
+        onPressed: createTask,
         child: const Icon(Icons.add),
       ),
     );

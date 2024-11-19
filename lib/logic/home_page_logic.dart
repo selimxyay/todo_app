@@ -5,7 +5,7 @@ import 'package:todo_app/pages/home_page.dart';
 import 'package:todo_app/widgets/create_new_task_dialog.dart';
 
 mixin HomePageLogic on State<HomePage> {
-  final todo = Hive.box('todo');
+  final box = Hive.box('todo');
   final db = TodoDatabase();
   final task = TextEditingController();
 
@@ -19,20 +19,20 @@ mixin HomePageLogic on State<HomePage> {
     });
   }
 
-  void createNewTask() {
+  void createTask() {
     showDialog(
       context: context,
       builder: (context) {
         return CreateNewTaskDialog(
           controller: task,
           onCancel: () => Navigator.of(context).pop(),
-          onSave: saveNewTask,
+          onSave: saveTask,
         );
       },
     );
   }
 
-  void saveNewTask() {
+  void saveTask() {
     setState(() {
       db.todoList.add([
         task.text,
